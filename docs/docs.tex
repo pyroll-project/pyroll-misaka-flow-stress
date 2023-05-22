@@ -1,0 +1,60 @@
+%! suppress = TooLargeSection
+%! suppress = SentenceEndWithCapital
+%! suppress = TooLargeSection
+% Preamble
+\documentclass[11pt]{PyRollDocs}
+\usepackage{textcomp}
+\usepackage{csquotes}
+\usepackage{wasysym}
+
+\addbibresource{refs.bib}
+
+% Document
+\begin{document}
+
+    \title{PyRolL Misaka flow stress Plugin}
+    \author{Christoph Renzing}
+    \date{\today}
+
+    \maketitle
+
+    This plugin provides the implementation of the constitutive equation from \textcite{Misaka1967} to calculate the flow stress of low alloyed carbon steels.
+
+
+    \section{Model approach}\label{sec:model-approach}
+
+    The model equation~\ref{eq:misaka-flow-stress} was derived from flow stress measurements.
+    Those have been conducted by the author who used hammer drop tests to investigate the flow stress of several low alloyed carbon steels.
+    The model equation  takes into account the strain $\epsilon$, strain rate $\dot{\epsilon}$, absolute temperature $T$ as well as the carbon content $C$ of the material.
+
+    \begin{equation}
+        k_{\mathrm{f,m}} = \exp{\left( 0.126 - 1.75 C + 0.594 C^2+ \frac{2851 + 2968 C -1120 C^2}{T} \right)} \epsilon^{0.21} \dot{\epsilon}^{0.13}
+        \label{eq:misaka-flow-stress}
+    \end{equation}
+
+    The equation is valid for strains of up to 0.5, temperatures between \qty{750}{\celsius} and \qty{1200}{\degree\celsius} and strain rates of \qty{30}{\per\second} to \qty{200}{\per\second}.
+    The maximum carbon content is 1.2 weight percent.
+
+
+    \section{Usage instructions}\label{sec:usage-instructions}
+
+    The plugin can be loaded under the name \texttt{pyroll\_misaka\_flow\_stress}.
+    The plugin defines the hooks
+
+    \begin{table}[h]
+        \centering
+        \caption{Hooks specified by this plugin.}
+        \label{tab:hookspecs}
+        \begin{tabular}{ll}
+            \toprule
+            Hook name                       & Meaning                                 \\
+            \midrule
+            \texttt{flow\_stress}           & Flow stress of the material             \\
+            \texttt{flow\_stress\_function} & Flow stress as a function of the strain \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    \printbibliography
+
+\end{document}
