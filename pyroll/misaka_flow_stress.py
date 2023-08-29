@@ -27,7 +27,7 @@ def misaka_flow_stress_function(self: DeformationUnit.Profile):
 
 def flow_stress(chemical_composition: dict[str, float], strain: float, strain_rate: float, temperature: float):
     """
-    Calculates the flow stress according to the constitutive equation from Y. Mikasas for the provided
+    Calculates the flow stress according to the constitutive equation from Y. Misaka for the provided
     material composition, strain, strain rate and temperature.
 
     :param chemical_composition: the chemical composition of the material
