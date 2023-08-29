@@ -1,4 +1,4 @@
-# PyRoll Misaka Flow Stress Model
+# PyRolL Misaka Flow Stress Model
 
 Plugin for PyRolL providing the constitutive flow stress function from Y. Misaka.
 
