@@ -2,7 +2,7 @@ import numpy as np
 
 from pyroll.core import DeformationUnit
 
-VERSION = "2.0.1"
+VERSION = "2.0.2"
 
 
 @DeformationUnit.Profile.flow_stress
@@ -42,7 +42,7 @@ def flow_stress(chemical_composition: dict[str, float], strain: float, strain_ra
     conversion_to_si_units_from_kgf_per_mm_squared = 9806650
 
     misaka_mean_flow_stress = np.exp(
-        0.126 - 1.75 * chemical_composition["carbon"] + 0.594 * chemical_composition["carbon"] ** 2 + (
-                2851 + 2968 * chemical_composition["carbon"] - 1120 * chemical_composition["carbon"] ** 2) / temperature) * strain ** 0.21 * strain_rate ** 0.13
+        0.126 - 1.75 * chemical_composition["C"] + 0.594 * chemical_composition["C"] ** 2 + (
+                2851 + 2968 * chemical_composition["C"] - 1120 * chemical_composition["C"] ** 2) / temperature) * strain ** 0.21 * strain_rate ** 0.13
 
     return misaka_mean_flow_stress * conversion_to_si_units_from_kgf_per_mm_squared
